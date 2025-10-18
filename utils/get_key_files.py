@@ -1,5 +1,6 @@
 import logging
 from typing import List
+from models.schemas import FileInfo
 
 def get_key_files(repo) -> List[FileInfo]:
     extensions = ['.py', '.js', '.ts', '.java', '.go', '.rs', '.jsx', '.tsx', '.vue', '.cpp', '.c', '.rb', '.php', '.cs', '.swift', '.kt']
