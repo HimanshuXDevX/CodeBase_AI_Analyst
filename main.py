@@ -192,25 +192,26 @@ def analyze_codebase(repo_full_name: str, analysis_type: AnalysisType) -> Analys
         except:
             readme_content = "No README found"
         
-        prompt = f"""Repository: {repo_full_name}
-Language: {metadata.language or 'Multiple/Unknown'}
-Stars: {metadata.stars}
-Description: {metadata.description or 'No description'}
+        prompt = f"""
+                Repository: {repo_full_name}
+                Language: {metadata.language or 'Multiple/Unknown'}
+                Stars: {metadata.stars}
+                Description: {metadata.description or 'No description'}
 
-README (first 2000 chars):
-{readme_content}
+                README (first 2000 chars):
+                {readme_content}
 
-Repository Structure (top 100 items):
-{structure_text}
+                Repository Structure (top 100 items):
+                {structure_text}
 
-Key Files Analyzed ({len(key_files)} files):
-{files_text}
+                Key Files Analyzed ({len(key_files)} files):
+                {files_text}
 
----
+                ---
 
-{ANALYSIS_PROMPTS[analysis_type]}
-
-Provide a thorough, evidence-based analysis. Reference specific files and code patterns you observe."""
+                {ANALYSIS_PROMPTS[analysis_type]}
+                Provide a thorough, evidence-based analysis. Reference specific files and code patterns you observe.
+                """
 
         models = [
             ("llama-3.3-70b-versatile", 6000),
